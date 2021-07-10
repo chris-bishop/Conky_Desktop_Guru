@@ -27,11 +27,22 @@
          > sudo cat /sys/class/hwmon/hwmon4/name
 
            ![alt text](https://github.com/chris-bishop/Conky_Desktop_Guru/blob/main/Sensors.png?raw=true)
+           
+   7. Copy the **./lua-scripts/vcgencmd-funcs.lua** file into directory your user has proper privileges against, and then update the following **./conky.conf** line with your path accordingly:
 
-   7. Create an auto start item for conky to load once system is started
+https://github.com/chris-bishop/Conky_Desktop_Guru/blob/main/conky.conf#L32
+
+```bash
+...
+  -- IMPORT LUA SCRIPTS
+  lua_load = '/etc/conky/lua-scripts/vcgencmd-funcs.lua',
+...
+```
+
+   8. Create an auto start item for conky to load once system is started
    
          ![alt text](https://github.com/chris-bishop/Conky_Desktop_Guru/blob/main/DesktopGuru.png?raw=true)
 
-   8. Enjoy :-) - And many thanks to [@moabdrabou](https://github.com/moabdrabou/Conky_Desktop_Guru/) for all the effort to provide the great foundation I had the pleasure of creating this fork from!
+   9. Enjoy :-) - And many thanks to [@moabdrabou](https://github.com/moabdrabou/Conky_Desktop_Guru/) for all the effort to provide the great foundation I had the pleasure of creating this fork from!
 
 
