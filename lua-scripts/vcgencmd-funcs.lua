@@ -52,7 +52,82 @@ function conky_get_root_block_device_name()
     return blk
 end
 
+function conky_get_active_network_interface_name()
+    local nfcnm = conky_parse("${gw_iface}")
+    return nfcnm
+end
+
+function conky_get_private_ipv4_addr()
+    nfcnm = conky_get_active_network_interface_name()
+    -- print(nfcnm)
+    cpargs = string.format('${%s %s}', 'addr', nfcnm)
+    -- print(cpargs)
+    privip = conky_parse(cpargs)
+    -- print(privip)
+    return privip
+end
+
 function conky_get_public_ipv4_addr()
     local addr = conky_parse("${exec dig +short myip.opendns.com @resolver1.opendns.com}")
     return addr
+end
+
+function conky_get_download_speed()
+    nfcnm = conky_get_active_network_interface_name()
+    -- print(nfcnm)
+    cpargs = string.format('${%s %s}', 'downspeedf', nfcnm)
+    -- print(cpargs)
+    dlspd = conky_parse(cpargs)
+    -- print(dlspd)
+    return dlspd
+end
+
+function conky_get_total_download()
+    nfcnm = conky_get_active_network_interface_name()
+    -- print(nfcnm)
+    cpargs = string.format('${%s %s}', 'totaldown', nfcnm)
+    -- print(cpargs)
+    ttldld = conky_parse(cpargs)
+    -- print(ttldld)
+    return ttldld
+end
+
+function conky_get_upload_speed()
+    nfcnm = conky_get_active_network_interface_name()
+    -- print(nfcnm)
+    cpargs = string.format('${%s %s}', 'upspeedf', nfcnm)
+    -- print(cpargs)
+    dlspd = conky_parse(cpargs)
+    -- print(dlspd)
+    return dlspd
+end
+
+function conky_get_total_upload()
+    nfcnm = conky_get_active_network_interface_name()
+    -- print(nfcnm)
+    cpargs = string.format('${%s %s}', 'totalup', nfcnm)
+    -- print(cpargs)
+    ttldld = conky_parse(cpargs)
+    -- print(ttldld)
+    return ttldld
+end
+
+function conky_get_downspeed_graph()
+    nfcnm = conky_get_active_network_interface_name()
+    -- print(nfcnm)
+    cpargs = string.format('${%s %s %s}', 'downspeedgraph', nfcnm, '50,280 ADFF2F 32CD32 -t')
+    -- print(cpargs)
+    ttldld = conky_parse(cpargs)
+    -- print(ttldld)
+    return ttldld
+end
+
+function conky_get_upspeed_graph()
+    nfcnm = conky_get_active_network_interface_name()
+    -- print(nfcnm)
+    cpargs = string.format('${%s %s %s}', 'upspeedgraph', nfcnm, '50,280 FF0000 8B0000 -t')
+    -- print(cpargs)
+    ttldld = conky_parse(cpargs)
+    -- print(ttldld)
+    return ttldld
 end
