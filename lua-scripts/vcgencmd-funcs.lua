@@ -72,6 +72,7 @@ function conky_get_public_ipv4_addr()
     return addr
 end
 
+--[[
 function conky_get_download_speed()
     nfcnm = conky_get_active_network_interface_name()
     -- print(nfcnm)
@@ -131,3 +132,4 @@ function conky_get_upspeed_graph()
     -- print(ttldld)
     return ttldld
 end
+--]]
